@@ -1,0 +1,175 @@
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: bodyContent;
+  src: url("ProximaNova-Regular.otf");
+}
+@font-face {
+  font-family: headerContent;
+  src: url("Ubuntu-Regular.ttf");
+}
+body {
+  transition: all 0.5s;
+  background: #9d9d9d;
+}
+.content {
+  transition: all 1s;
+}
+.indent {
+  height: 100%;
+  margin-left: 1em;
+}
+.cardHolder {
+  display: table;
+  margin-bottom: 1em;
+}
+.large {
+  padding: 1em;
+  padding-bottom: 0em;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  background-color: #fff;
+  box-shadow: 2px 2px 1px #59595b;
+  width: 600px;
+  min-height: 300px;
+}
+.banner {
+  padding: 1em;
+  margin-right: 1em;
+  background-color: #fff;
+  box-shadow: 2px 2px 1px #59595b;
+}
+.section {
+  padding-left: 1em;
+  margin-right: 1em;
+  background-color: #fff;
+  box-shadow: 2px 2px 1px #59595b;
+}
+.spacer {
+  height: 1em;
+}
+.point {
+  transition: all 0.25s;
+  font-family: bodyContent;
+  font-size: 1em;
+  color: #59595b;
+  line-height: 120%;
+  min-height: 1em;
+}
+.exit {
+  transition: all 0.25s;
+  font-family: bodyContent;
+  font-size: 1em;
+  color: #59595b;
+  line-height: 120%;
+  min-height: 1em;
+  font-weight: bold;
+  text-decoration: none;
+}
+.exit:hover {
+  font-family: bodyContent;
+  font-size: 1em;
+  color: #bdd530;
+  line-height: 120%;
+}
+.title {
+  transition: all 0.25s;
+  font-family: headerContent;
+  font-size: 1.1em;
+  color: #59595b;
+  line-height: 120%;
+}
+.header {
+  transition: all 0.25s;
+  font-weight: bold;
+  font-family: headerContent;
+  font-size: 2em;
+  color: #59595b;
+  line-height: 120%;
+}
+.header.button {
+  text-decoration: none;
+}
+.header.button:hover {
+  font-family: headerContent;
+  font-size: 2em;
+  color: #bdd530;
+  line-height: 120%;
+}
+.header.hilight {
+  font-family: headerContent;
+  font-size: 2em;
+  color: #9d9d9d;
+  line-height: 120%;
+}
+.input {
+  transition: all 0.5s;
+  padding-left: 1em;
+  font-family: bodyContent;
+  font-size: 1em;
+  color: #000;
+  line-height: 120%;
+  background: #fff;
+  border-style: dotted;
+  border-width: 1px;
+  width: 125px;
+  border-color: #9d9d9d;
+  outline: none;
+  width: 200px;
+}
+.inputArea {
+  width: 100%;
+  font-family: bodyContent;
+  font-size: 1em;
+  color: #000;
+  line-height: 120%;
+  background: #fff;
+  padding: 1em;
+  border-style: dotted;
+  border-color: #9d9d9d;
+  border-width: 1px;
+  outline: none;
+}
+.submit {
+  transition: all 0.5s;
+  font-family: bodyContent;
+  font-size: 1em;
+  color: #fff;
+  line-height: 120%;
+  background: #59595b;
+  text-decoration: none;
+  width: 125px;
+  border-color: #9d9d9d;
+  outline: none;
+  border: none;
+}
+.submit:hover {
+  background: #bdd530;
+}
+.submit.wait {
+  background: #fff;
+  font-family: bodyContent;
+  font-size: 1em;
+  color: #000;
+  line-height: 120%;
+}
+::-webkit-input-placeholder {
+  color: #9d9d9d;
+}
+:-moz-placeholder {
+  color: #9d9d9d;
+  opacity: 1;
+}
+::-moz-placeholder {
+  color: #9d9d9d;
+  opacity: 1;
+}
+:-ms-input-placeholder {
+  color: #9d9d9d;
+}
