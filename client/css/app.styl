@@ -1,0 +1,176 @@
+*, *:before, *:after
+  margin 0
+  padding 0
+  -webkit-box-sizing border-box
+  box-sizing border-box
+
+@font-face
+  font-family bodyContent
+  src url('ProximaNova-Regular.otf')
+  
+@font-face
+  font-family headerContent
+  src url('Ubuntu-Regular.ttf')
+
+LMwhite     = #ffffff
+LMHiLight   = #bdd530
+LMLightGray = #9d9d9d
+LMDarkGray  = #59595b
+LMBlack     = #000000
+
+
+specifyFont(inputColor, inputFont, inputSize)
+  font-family inputFont
+  font-size inputSize
+  color inputColor
+  line-height 120%
+
+  
+inputBasics()
+  // height 1em
+  width 125px
+  // border none
+  border-color LMLightGray
+  outline none
+
+  
+body
+  transition all 0.5s
+  background LMLightGray
+
+
+.content
+  transition all 1s
+ 
+
+.indent
+  height 100%
+  margin-left 1em
+
+  
+.cardHolder
+  display table
+  margin-bottom 1em
+
+
+.large
+  padding 1em
+  padding-bottom 0em
+  margin-right 1em
+  margin-bottom 1em
+  background-color LMwhite
+  box-shadow 2px 2px 1px LMDarkGray
+  width 600px
+  min-height 300px
+
+
+.banner
+  padding 1em
+  margin-right 1em
+  background-color LMwhite
+  box-shadow 2px 2px 1px LMDarkGray
+  
+
+.section
+  // padding 1em
+  padding-left 1em
+  margin-right 1em
+  background-color LMwhite
+  box-shadow 2px 2px 1px LMDarkGray
+  
+
+.spacer
+  height 1em
+    
+
+.point
+  transition all 0.25s
+  specifyFont(LMDarkGray, bodyContent, 1em)
+  min-height 1em
+  
+
+.exit
+  transition all 0.25s
+  specifyFont(LMDarkGray, bodyContent, 1em)
+  min-height 1em
+  font-weight bold
+  text-decoration none
+  &:hover
+    specifyFont(LMHiLight, bodyContent, 1em)
+
+.title
+  transition all 0.25s
+  specifyFont(LMDarkGray, headerContent, 1.1em)
+
+.header
+  transition all 0.25s
+  font-weight bold
+  specifyFont(LMDarkGray, headerContent, 2em)
+  &.button
+    text-decoration none
+    &:hover
+       specifyFont(LMHiLight, headerContent, 2em)
+  &.hilight
+    specifyFont(LMLightGray, headerContent, 2em)
+
+
+.input
+  transition all 0.5s
+  padding-left 1em
+  specifyFont(LMBlack, bodyContent, 1em)
+  background LMwhite
+  border-style dotted
+  border-width 1px
+  inputBasics()
+  width 200px
+
+.inputArea
+  width 100%
+  specifyFont(LMBlack, bodyContent, 1em)
+  background LMwhite
+  padding 1em
+  // border none
+  border-style dotted
+  border-color LMLightGray
+  border-width 1px
+  outline none
+
+
+.submit
+  transition all 0.5s
+  specifyFont( LMwhite, bodyContent, 1em)
+  background LMDarkGray
+  text-decoration none
+  inputBasics()
+  border none
+  &:hover
+    background LMHiLight
+  &.wait
+    background LMwhite
+    specifyFont( LMBlack, bodyContent, 1em)
+  
+
+::-webkit-input-placeholder
+  color LMLightGray
+  
+
+:-moz-placeholder
+  color LMLightGray
+  opacity  1
+
+
+::-moz-placeholder
+  color LMLightGray
+  opacity  1
+
+
+:-ms-input-placeholder
+  color LMLightGray
+
+
+    
+
+
+
+
+
