@@ -13,7 +13,7 @@ eachCell = (sectionType, member) ->
   output =
     display:    'inline-block'
     marginLeft: '0.5em'
-    width: 125
+    width:      100
 
   switch sectionType
     when true
@@ -29,10 +29,10 @@ MemberView  = React.createClass
 
 
   getInitialState: ->
-    edit: false
+    edit:     false
     editName: 'Edit'
-    margins: 0.5
-    member: @
+    margins:  0.5
+
 
   editSet: ->
     @setState edit: not @state.edit
@@ -47,7 +47,7 @@ MemberView  = React.createClass
 
         returnToEdit = =>
           @setState editName: 'Edit'
-          @setState margins: 0.5
+          @setState margins:  0.5
 
         @props.SaveMember @props.memberIndex, @props.memberId, returnToEdit
 
@@ -64,18 +64,18 @@ MemberView  = React.createClass
 
       div
         style:
-          display: 'table'
+          display:      'table'
         div
           style:
             display:    'inline-block'
             marginLeft: '0.5em'
-            width: 200
+            width:      200
 
           p
-            className: 'point'
+            className:    'point'
             style:
               marginLeft: '1em'
-              display: 'inline-block'
+              display:    'inline-block'
             @props.member.firstName + ' ' + @props.member.lastName
 
 
@@ -84,13 +84,13 @@ MemberView  = React.createClass
             eachCell( @props.member.TIG )
 
           p
-            className: 'point'
+            className:      'point'
             style:
-              textAlign: 'center'
-              cursor: 'pointer'
-            onClick: @props.SetTIG
-            'data-index': @props.memberIndex
-            'data-permit': @state.edit
+              textAlign:    'center'
+              cursor:       'pointer'
+            onClick:        @props.SetTIG
+            'data-index':   @props.memberIndex
+            'data-permit':  @state.edit
 
             'TIG'
 
@@ -99,13 +99,13 @@ MemberView  = React.createClass
             eachCell( @props.member.MIG )
 
           p
-            className: 'point'
+            className:       'point'
             style:
-              textAlign: 'center'
-              cursor: 'pointer'
-            onClick: @props.SetMIG
-            'data-index': @props.memberIndex
-            'data-permit': @state.edit
+              textAlign:     'center'
+              cursor:        'pointer'
+            onClick:         @props.SetMIG
+            'data-index':    @props.memberIndex
+            'data-permit':   @state.edit
 
             'MIG'
 
@@ -114,72 +114,99 @@ MemberView  = React.createClass
             eachCell( @props.member.laser)
 
           p
-            className: 'point'
+            className:      'point'
             style:
-              textAlign: 'center'
-              cursor: 'pointer'
-            onClick: @props.SetLaser
-            'data-index': @props.memberIndex
-            'data-permit': @state.edit
+              textAlign:    'center'
+              cursor:       'pointer'
+            onClick:        @props.SetLaser
+            'data-index':   @props.memberIndex
+            'data-permit':  @state.edit
 
             'Laser'
 
         div
           style:
-            eachCell( @props.member.smallCNCMill)
+            eachCell( @props.member.smallCNCMill )
 
           p
-            className: 'point'
+            className:      'point'
             style:
-              textAlign: 'center'
-              cursor: 'pointer'
-            onClick: @props.SetSmallCNCMill
-            'data-index': @props.memberIndex
-            'data-permit': @state.edit
+              textAlign:    'center'
+              cursor:       'pointer'
+            onClick:        @props.SetSmallCNCMill
+            'data-index':   @props.memberIndex
+            'data-permit':  @state.edit
 
-            'Small CNC Mill'
-
-        input
-          className: 'submit'
-          style:
-            marginLeft: '1em'
-          type: 'submit'
-          value: @state.editName
-          onClick: @editSet
-
-      div
-        style:
-          display: 'table'
+            'CNC Mill'
 
         div
           style:
-            display:    'inline-block'
-            marginLeft: '0.5em'
-            width: 100
+            eachCell( @props.member.t3DPrinters )
+
+          p
+            className:      'point'
+            style:
+              textAlign:    'center'
+              cursor:       'pointer'
+            onClick:        @props.Set3DPrinters
+            'data-index':   @props.memberIndex
+            'data-permit':  @state.edit
+
+            '3D Printers'
+
+        input
+          className:    'submit'
+          style:
+            width:      50
+            marginLeft: '1em'
+          type:         'submit'
+          value:        @state.editName
+          onClick:      @editSet
+
+        div
+          style:
+            display:      'inline-block'
+            marginLeft:   '0.5em'
+            width:        100
 
           a
-            className: 'exit'
-            href: @props.member.photo
+            className:    'exit'
+            href:         @props.member.photo
             style:
-              cursor: 'pointer'
+              cursor:     'pointer'
               marginLeft: '1em'
-              display: 'inline-block'
+              display:    'inline-block'
             'Photo'
 
         div
           style:
-            display:    'inline-block'
-            marginLeft: '0.5em'
-            width: 100
+            eachCell( @props.member.oriented )
 
           p
-            className: 'exit'
-            href: @props.member.doc
+            className:      'point'
             style:
-              cursor: 'pointer'
-              marginLeft: '1em'
-              display: 'inline-block'
-            'Document'
+              textAlign:    'center'
+              cursor:       'pointer'
+            onClick:        @props.SetOrientation
+            'data-index':   @props.memberIndex
+            'data-permit':  @state.edit
+
+            'Oriented'
+
+        # div
+        #   style:
+        #     display:    'inline-block'
+        #     marginLeft: '0.5em'
+        #     width: 100
+
+        #   p
+        #     className: 'exit'
+        #     href: @props.member.doc
+        #     style:
+        #       cursor: 'pointer'
+        #       marginLeft: '1em'
+        #       display: 'inline-block'
+        #     'Document'
 
 
 

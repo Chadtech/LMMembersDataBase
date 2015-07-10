@@ -7,6 +7,7 @@ Parse.initialize "0wKSaP3SaJy0wl8pxjFRnXGSqTQgLkFVeOspAaBs", "OqwaDAm6NUz6DQOfwz
 
 AddMember  = require './add-member.coffee'
 MemberView = require './member-view.coffee'
+Search     = require './search.coffee'
 
 # DOM Elements
 {p, a, div, input, img} = React.DOM
@@ -28,7 +29,7 @@ IndexClass = React.createClass
         console.log error
 
     initialState =
-      members: []
+      members:  []
       loggedIn: false
       username: ''
       password: ''
@@ -64,6 +65,20 @@ IndexClass = React.createClass
       @setState members: @state.members
 
 
+  Set3DPrinters: (event) ->
+    if event.target.getAttribute 'data-permit'
+      memberIndex = event.target.getAttribute 'data-index'
+      @state.members[memberIndex].attributes.t3DPrinters = not @state.members[memberIndex].attributes.t3DPrinters
+      @setState members: @state.members
+
+
+  SetOrientation: (event) ->
+    if event.target.getAttribute 'data-permit'
+      memberIndex = event.target.getAttribute 'data-index'
+      @state.members[memberIndex].attributes.oriented = not @state.members[memberIndex].attributes.oriented
+      @setState members: @state.members
+
+
   usernameHandle: (event) ->
     @setState username: event.target.value
 
@@ -95,12 +110,70 @@ IndexClass = React.createClass
     thisMember.set 'MIG',          @state.members[index].attributes.MIG
     thisMember.set 'laser',        @state.members[index].attributes.laser
     thisMember.set 'smallCNCMill', @state.members[index].attributes.smallCNCMill
+    thisMember.set 't3DPrinters',  @state.members[index].attributes.t3DPrinters
+    thisMember.set 'waterjet',     @state.members[index].attributes.waterjet
+    thisMember.set 'oriented',     @state.members[index].attributes.oriented
 
     thisMember.save null, 
       success: (result) ->
         console.log 'YE SUCESS', result 
 
     next()
+
+  SearchName: (name) ->
+
+    name = name.toLowerCase()
+
+    filteredMembers = _.filter @state.members, (member) ->
+      theirName = ''
+      theirName += member.attributes.firstName
+      theirName += ' '
+      theirName += member.attributes.lastName
+      theirName = theirName.toLowerCase()
+
+      (theirName.indexOf name) isnt -1
+
+    @setState members: filteredMembers
+
+  handleTSV: (namesToAdd) ->
+
+    namesOfMembers = _.map @state.members, (member) ->
+      name = member.attributes.firstName
+      name += ' '
+      name += member.attributes.lastName
+      name = name.toLowerCase()
+
+    for name in namesToAdd
+      name = name.toLowerCase()
+      
+      pointOfNameBreak = name.indexOf ' '
+      theirFirstName = name.substring 0, pointOfNameBreak
+      theirLastName  = name.substring pointOfNameBreak
+
+      if not (name in namesOfMembers)
+        Member    = Parse.Object.extend 'Member'
+        newMember = new Member()
+
+        newMember.set 'TIG',          false
+        newMember.set 'MIG',          false
+        newMember.set 'laser',        false
+        newMember.set 'smallCNCMill', false
+        newMember.set 't3DPrinters',  false
+        newMember.set 'waterjet',     false
+        newMember.set 'oriented',     false
+
+        newMember.set 'firstName',    theirFirstName
+        newMember.set 'lastName',     theirLastName
+
+        newMember.save null, 
+          success: =>
+            # location.reload()
+          error: (error) ->
+            console.log 'ERROR', error
+
+    # location.reload()
+
+
 
   render: ->
 
@@ -124,6 +197,12 @@ IndexClass = React.createClass
 
         if @state.loggedIn
 
+          Search
+            search: @SearchName
+            TSV:    @handleTSV
+
+        if @state.loggedIn
+
           _.map @state.members, (member, memberIndex) =>
             MemberView 
               member:           member.attributes
@@ -132,6 +211,8 @@ IndexClass = React.createClass
               SetMIG:           @SetMIG
               SetLaser:         @SetLaser
               SetSmallCNCMill:  @SetSmallCNCMill
+              Set3DPrinters:    @Set3DPrinters
+              SetOrientation:   @SetOrientation
               SaveMember:       @SaveMember
               memberId:         member.id
 
@@ -165,6 +246,7 @@ IndexClass = React.createClass
               type:         'submit'
               value:        'log in'
               onClick:      @login
+
 
 
 

@@ -31,7 +31,6 @@ AddMember  = React.createClass
       newMember.set 'laser',        false
       newMember.set 'smallCNCMill', false
       newMember.set 'photo',        @state.photo
-      newMember.set 'doc',          @state.doc
       newMember.set 'firstName',    @state.firstName
       newMember.set 'lastName',     @state.lastName
 
@@ -93,7 +92,6 @@ AddMember  = React.createClass
     div 
       className: 'section'
 
-
       input
         className:    'input'
         placeholder:  'first name'
@@ -123,20 +121,6 @@ AddMember  = React.createClass
         onChange:     @handlePhoto
         style:
           marginLeft: '1em'
-
-      p
-        className:    'point'
-        style:
-          marginLeft: '1em'
-          display:    'inline-block'
-        'Document:'
-
-      input
-        type:         'file'
-        onChange:     @handleDoc
-        style:
-          marginLeft: '1em'
-
 
       input
         className:    @state.submitClass
