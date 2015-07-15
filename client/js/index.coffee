@@ -12,6 +12,8 @@ Search     = require './search.coffee'
 # DOM Elements
 {p, a, div, input, img} = React.DOM
 
+# Dank Memes (all day long)
+
 
 IndexClass = React.createClass
 
@@ -170,8 +172,6 @@ IndexClass = React.createClass
             # location.reload()
           error: (error) ->
             console.log 'ERROR', error
-
-    # location.reload()
 
 
 
